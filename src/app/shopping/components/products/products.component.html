@@ -1,0 +1,41 @@
+<div class="row">
+  <ng-container *ngFor="let p of products$; let i = index">
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{p.defaultImage}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title prod-info-clip">{{p.name}}</h5>
+          <p class="card-text prod-info-clip">{{ p.description }}</p>
+          <p class="card-text">{{ p.price | currency: 'EUR': 'symbol' }}</p>
+        </div>
+        <div class="card-footer">
+          <button *ngIf="getQuantity(p) === 0; else updateQuantity" (click)="addToCart(p)"
+            class="btn btn-secondary pointer-class">Add
+            to Cart</button>
+          <ng-template #updateQuantity>
+            <div class="row no-gutters">
+              <div class="col-2">
+                <button (click)="removeFromCart(p)" class="btn btn-secondary btn-block
+                pointer-class">-</button>
+              </div>
+              <div class="col text-center">
+                {{getQuantity(p)}} in cart
+              </div>
+              <div class="col-2">
+                <button (click)="addToCart(p)" class="btn btn-secondary btn-block
+                pointer-class">+</button>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(i + 1) % 4 === 0" class="w-100">
+    </div>
+  </ng-container>
+  <div class="col-6" *ngIf="getShowCartPane()">
+    <div class="sidebar">
+      <shopping-cart></shopping-cart>
+    </div>
+  </div>
+</div>

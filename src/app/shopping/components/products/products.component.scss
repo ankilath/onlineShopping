@@ -1,0 +1,27 @@
+.prod-info-clip {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.card-footer {
+  padding: 0;
+}
+
+.sidebar {
+  padding-top: 32px;
+  width: 30%;
+  background-color: #f1f1f1;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 0px;
+  z-index: 9;
+  right: 0px;
+  margin-top: 56px;
+}

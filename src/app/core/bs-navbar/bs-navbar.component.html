@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Smart Hardware Shop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Products</a>
+        </li>
+      </ul>
+      <div class="img-cart-align">
+        <img class="img-width pointer-class" (click)="showCartPane()" src="../../../assets/img/shopping-cart.png" />
+        <span class="badge badge-warning badge-pill">
+          {{getQuantity()}}
+        </span>
+      </div>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" name="Search Products" aria-label="Search"
+          [(ngModel)]="searchText" (ngModelChange)="assignSearchValue($event)">
+        <button class="btn btn-outline-success" type="submit" (click)="filterProducts()">
+          Search
+        </button>
+        <img class="img-width pointer-class user-icon" src="../../../assets/img/user-icon.png" />
+      </form>
+    </div>
+  </div>
+</nav>

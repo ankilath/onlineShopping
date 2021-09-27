@@ -1,0 +1,24 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Qty</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products$">
+        <td *ngIf="p.qty !== 0">{{p.name}}</td>
+        <td *ngIf="p.qty !== 0">{{p.qty}}</td>
+        <td *ngIf="p.qty !== 0">{{p.price | currency: 'EUR': 'symbol'}}</td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="products$.length > 0">
+      <tr>
+        <td>Total</td>
+        <td>{{totalAmount() | currency: 'EUR': 'symbol'}}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
