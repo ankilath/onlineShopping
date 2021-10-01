@@ -13,6 +13,9 @@ export class ShoppingCartService {
 
   constructor(private http: HttpClient, private productService: ProductService) { }
 
+  /*
+    It updates the shopping cart count
+  */
   addOrRemoveItems() {
     this.prodCount = 0;
     for (let index in this.productService.eachProdCount) {
@@ -20,18 +23,22 @@ export class ShoppingCartService {
     }
   }
 
+  /*
+    It updates each individual product quantity
+    @params : Iproduct type, operation is for functionality
+    @return : number value
+  */
+
   checkIfProdExists(product: IProduct, operation: string) {
     for (let index in this.productService.eachProdCount) {
       if (this.productService.eachProdCount[index].id == product.id) {
         if (operation === 'addItem') {
-          this.productService.eachProdCount[index].qty =
-            this.productService.eachProdCount[index].qty + 1;
-          return;
+          this.productService.eachProdCount[index].qty += 1;
+          return 0;
         }
         else if (operation === 'removeItem') {
-          this.productService.eachProdCount[index].qty =
-            this.productService.eachProdCount[index].qty - 1;
-          return;
+          this.productService.eachProdCount[index].qty -= 1;
+          return 0;
         }
         else {
           return this.productService.eachProdCount[index].qty;
@@ -39,14 +46,13 @@ export class ShoppingCartService {
       }
     }
     if (operation === 'addItem')
-      return this.productService.eachProdCount.push(
+      this.productService.eachProdCount.push(
         {
           id: product.id, qty: 1,
           name: product.name, price: product.price
         }
       );
-    else
-      return 0;
+    return 0;
   }
 
 }

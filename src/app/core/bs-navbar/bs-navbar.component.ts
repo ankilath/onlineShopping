@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 
@@ -14,6 +14,10 @@ export class BsNavbarComponent {
   constructor(private productService: ProductService,
     private cartService: ShoppingCartService) { }
 
+  /*
+    This searches the keyword
+    @params : string
+  */
   assignSearchValue($event) {
     this.searchText = $event;
   }
