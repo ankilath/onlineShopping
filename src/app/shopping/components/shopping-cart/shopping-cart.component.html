@@ -1,5 +1,5 @@
 <div>
-  <table class="table">
+  <table class="table" *ngIf="products$.length > 0">
     <thead>
       <tr>
         <th>Name</th>
@@ -14,11 +14,14 @@
         <td *ngIf="p.qty !== 0">{{p.price | currency: 'EUR': 'symbol'}}</td>
       </tr>
     </tbody>
-    <tfoot *ngIf="products$.length > 0">
+    <tfoot>
       <tr>
         <td>Total</td>
         <td>{{totalAmount() | currency: 'EUR': 'symbol'}}</td>
       </tr>
     </tfoot>
   </table>
+  <div *ngIf="products$.length == 0">
+    <p>No Product Added</p>
+  </div>
 </div>
